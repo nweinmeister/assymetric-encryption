@@ -6,32 +6,21 @@ class KeyGenerator
 		q = get_random_prime
 		n = p * q
 		phi = (p-1) * (q-1)
-		e = 3
+		e = [p, q].min
 		while phi.gcd(e) > 1
-			e += 2
+			e += 1
 		end
-
-		d = 1
-		while phi % (e*d-1) != 0
+		d = [p, q].min
+		while (d*e) % phi != 1
 			d += 1
 		end
-		
 		gcd = e.gcd(phi)
 		# d = (phi + gcd)/e
 		{e: e, d: d, n: n}
 	end
 
-	def encrypt_value(number:, e:, n:)
-		(number**e) % n
-	end
-
-	def decrypt_value(encrypted:, d:, n:)
-		(encrypted**d) % n
-	end
-
 	def get_random_prime
-		r = Prime.take(4)[Random.rand(4)-1]
-		puts "prime", r 
+		r = Prime.take(100)[Random.rand(60..100)-1]
 		r
 	end
 end
