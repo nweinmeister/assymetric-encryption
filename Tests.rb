@@ -11,25 +11,17 @@ class Tests < TestCase
 		assert_equal('b', Numberizer.get_letter_value(number: 6))
 	end
 
-	def test_key_gen
-		test_text = "d"
-		k = KeyGenerator.new
-		key_pair = k.generate_key_pair
-		encrypted = Encryptor.encrypt_value(number: Numberizer.get_number_value(letter: test_text), e: key_pair[:e], n: key_pair[:n])
-		decrypted = Decryptor.decrypt_value(encrypted: encrypted, d: key_pair[:d], n: key_pair[:n])
-		assert_equal test_text, Numberizer.get_letter_value(number: decrypted)
-	end
-
 	def test_string_encryption
 		test_string = "Hello I am an unencrypted string"
 		k = KeyGenerator.new
 		key_pair = k.generate_key_pair
-		encrypted = Encryptor.encrypt_string(string: test_string, e: key_pair[:e], n: key_pair[:n])
-		decrypted_string = Decryptor.decrypt_string(string: encrypted, d: key_pair[:d], n: key_pair[:n])
+		puts key_pair
+		encrypted = Encryptor.encrypt_string(string: test_string, public_key: key_pair[:public_key])
+		decrypted_string = Decryptor.decrypt_string(string: encrypted, private_key: key_pair[:private_key])
 
 		assert_equal test_string, decrypted_string
-		puts "Here is the public key: " + key_pair[:e].to_s
-		puts "Here is the private key: " + key_pair[:d].to_s
+		puts "Here is the public key: " + key_pair[:public_key].to_s
+		puts "Here is the private key: " + key_pair[:private_key].to_s
 		puts "Here is encrypted string: " + encrypted
 		puts "Here is the decrypted string: " + decrypted_string
 	end
