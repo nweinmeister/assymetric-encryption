@@ -31,4 +31,13 @@ class KeyGenerator
 		end
 		d
 	end
+
+	def write_files
+		key_pair = generate_key_pair
+		IO.write("files/private_key.txt", key_pair[:private_key])
+		IO.write("files/public_key.txt", key_pair[:public_key])
+	end
 end
+
+k = KeyGenerator.new
+k.write_files
