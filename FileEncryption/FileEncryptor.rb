@@ -1,5 +1,5 @@
-require('./KeyGenerator.rb')
-require('./Encryptor.rb')
+require('../Tools/KeyGenerator.rb')
+require('../BaseEncryption/Encryptor.rb')
 
 class FileEncryptor
 	def start	

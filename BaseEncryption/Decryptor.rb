@@ -1,4 +1,4 @@
-require('./Numberizer')
+require('./Tools/Numberizer')
 
 class Decryptor
 	class << self

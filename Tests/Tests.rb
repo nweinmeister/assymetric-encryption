@@ -1,8 +1,8 @@
-require('./TestCase.rb')
-require('./Numberizer.rb')
-require('./KeyGenerator.rb')
-require('./Encryptor.rb')
-require('./Decryptor.rb')
+require('./Tests/TestCase.rb')
+require('./Tools/Numberizer.rb')
+require('./Tools/KeyGenerator.rb')
+require('./BaseEncryption/Encryptor.rb')
+require('./BaseEncryption/Decryptor.rb')
 require('prime')
 
 class Tests < TestCase

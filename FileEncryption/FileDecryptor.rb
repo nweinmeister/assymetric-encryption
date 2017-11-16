@@ -1,4 +1,4 @@
-require('./Decryptor')
+require('../BaseEncryption/Decryptor')
 
 class FileDecryptor
 	def start

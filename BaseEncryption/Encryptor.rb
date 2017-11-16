@@ -1,4 +1,4 @@
-require('./Numberizer.rb')
+require('./Tools/Numberizer.rb')
 
 class Encryptor
 	class << self
